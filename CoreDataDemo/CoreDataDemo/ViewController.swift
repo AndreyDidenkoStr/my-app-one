@@ -9,22 +9,38 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var labelName = UILabel()
+    var blueLabel = UILabel()
+    var redLabel = UILabel()
+    var heihgt = UIScreen()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(labelName)
-        labelName.text = "Hello world"
-        labelName.backgroundColor = .red
-        labelName.translatesAutoresizingMaskIntoConstraints = false
+        func windowHeight() -> CGFloat {
+            return UIScreen.main.bounds.size.height
+        }
         
-        NSLayoutConstraint.activate([
-            labelName.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            labelName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-            labelName.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
-            labelName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100)
+        func windowWeigtht() -> CGFloat {
+            return UIScreen.main.bounds.size.width
+        }
+        
+        print(windowWeigtht())
+        
+        view.addSubview(blueLabel)
+        
+        blueLabel.backgroundColor = .blue
+        
+        blueLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addConstraints([
+            blueLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            blueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blueLabel.heightAnchor.constraint(equalToConstant: windowHeight()),
+            blueLabel.widthAnchor.constraint(equalToConstant: windowWeigtht() / 2)
+            
         ])
+        
+        
     }
 
 
